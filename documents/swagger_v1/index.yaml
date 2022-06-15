@@ -1,0 +1,30 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: School Api
+  description: Una simple aplicacion api
+  contact:
+      name: Eduardo Avila
+      url: 'eduardoavilach@hotmail.com'
+servers:
+  - url: /api/v1
+    description: Optional server description, e.g. Main (production) server
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  responses:
+    UnauthorizedError:
+      type: object
+      properties:
+        errors:
+          type: boolean
+        message:
+          type: string
+        status_code:
+          type: number
+
+security:
+  - bearerAuth: []
