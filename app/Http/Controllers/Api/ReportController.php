@@ -10,8 +10,8 @@ use App\Models\Courses;
 
 class ReportController extends Controller
 {
-    public function reportStudentCurse()
+    public function reportStudentCurse(Request $request)
     {
-        dd('report');
+        return (new CourseExport($request->year,$request->course_id))->download('course.xlsx', Excel::XLSX);
     }
 }

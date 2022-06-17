@@ -18,7 +18,7 @@ class Courses extends Model
 
     public function teachers()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class,'teachers_courses')->wherePivot('deleted_at',NULL);
     }
 
     public function scores()

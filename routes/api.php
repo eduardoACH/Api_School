@@ -40,3 +40,4 @@ Route::middleware('client')->group(function (){
     Route::get('report',[ReportController::class,'reportStudentCurse'])->name('report');
 });
 
+
