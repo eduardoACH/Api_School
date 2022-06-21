@@ -1,0 +1,30 @@
+paths:
+  /user/{type}:
+    summary: Url de para ver los usuarios por rol.
+    parameters:
+    - name: type
+      in: path
+      description: rol existente
+      required: true
+      schema:
+        type: string
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        -  Mosrtrar usuarios
+      summary: Mostrar los usuarios por rol.
+      operationId: indexUser
+      responses:
+        200:
+          description: Lista de usuarios.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Error de credenciales
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'

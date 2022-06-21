@@ -1,5 +1,5 @@
 paths:
-  /auth/login:
+  /oauth/token:
     post:
       tags:
         - auth
@@ -25,112 +25,27 @@ paths:
             application/json:
               schema:
                 $ref: "#components/schemas/UserAuth"
-  /auth/me:
-    get:
-      security:
-        - bearerAuth: []
-      tags:
-        - auth
-      summary: Get curent user info
-      description: Get current user info
-      produces:
-      - application/json
+  /login:
+    summary: Url de login.
+    post:
+      tags: 
+        - Login
+      summary: Iniciar session.
+      operationId: session
+      requestBody:
+        description: Objeto para iniciar seccion
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
       responses:
         200:
-          description: OK
+          description: Session iniciada.
           content:
             application/json:
               schema:
-                $ref: "#components/schemas/UserMe"
-        401:
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/responses/UnauthorizedError'
-components:
-  schemas:
-    UserAuth:
-      type: object
-      properties:
-        errors:
-          type: boolean
-        data:
-          type: object
-          properties:
-            user:
-              $ref: '#/definitions/User'
-            token:
-              type: object
-              properties:
-                token_type:
-                  type: string
-                expires_in:
-                  type: number
-                access_token:
-                  type: string
-                refresh_token:
-                  type: string
-    UserMe:
-      type: object
-      properties:
-        errors:
-          type: boolean
-        data:
-          type: object
-          properties:
-            user:
-              $ref: '#/definitions/User'
-    AuthLogin:
-      type: object
-      properties:
-        username:
-          type: string
-          description: Username or email or phone
-        password:
-          type: string
-          description: password
-        client_id:
-          type: string
-          description: client id of laravel passport
-        client_secret:
-          type: string
-          description: client secret of laravel passport
-      required:
-        - username
-        - password
-        - client_id
-        - client_secret
-definitions:
-  User:
-    properties:
-      id:
-        type: number
-      avatar:
-        type: string
-      username:
-        type: string
-      birth_day:
-        type: string
-      name:
-        type: string
-      email:
-        type: string
-      address:
-        type: string
-      phone_number:
-        type: string
-      role:
-        type: string
-      status:
-        type: string
-      fb_id:
-        type: string
-      gg_id:
-        type: string
-      created_at:
-        type: string
-      updated_at:
-        type: string
-      country_code:
-        type: string
+                $ref: '#/components/schemas/User'

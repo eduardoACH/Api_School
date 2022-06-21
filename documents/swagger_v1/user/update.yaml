@@ -1,0 +1,97 @@
+paths:
+  /user/{userid}:
+    summary: Url de para editar usuario.
+    parameters:
+    - name: userid
+      in: path
+      description: id del usuario que desea modificar
+      required: true
+      schema:
+        type: string
+    put:
+      security:
+        - bearerAuth: []
+      tags: 
+        -  editar usuario
+      summary: Editar los usuarios.
+      operationId: updateUser
+      requestBody:
+        description: Objeto para editar usuarios
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        200:
+          description: Usuario editado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Error de credenciales
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /user/password/{userid}:
+    summary: Url de para editar la contraseña del usuario.
+    parameters:
+    - name: userid
+      in: path
+      description: id del usuario que desea modificar
+      required: true
+      schema:
+        type: string
+    put:
+      security:
+        - bearerAuth: []
+      tags:
+        -  Editar contraseña del usuario
+      summary: Editar los usuarios.
+      operationId: updateUser
+      requestBody:
+        description: Objeto para editar usuarios
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - password
+                - password_confirmation
+              properties:
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - password
+                - password_confirmation
+              properties:
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+        required: true
+      responses:
+        200:
+          description: Contraseña cambiada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Error de credenciales
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+    

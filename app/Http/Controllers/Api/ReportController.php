@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
 use App\Exports\CourseExport;
-use App\Models\Courses;
 
 class ReportController extends Controller
 {

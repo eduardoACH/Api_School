@@ -1,30 +1,16 @@
-openapi: 3.0.0
+openapi: 3.0.1
 info:
   version: 1.0.0
   title: School Api
-  description: Una simple aplicacion api
+  description: Es un endpoint para iniciar seccion para obtener token, registrar usuarios, materias y modificar sus datos.
   contact:
       name: Eduardo Avila
-      url: 'eduardoavilach@hotmail.com'
+      email: eduardoavilach@hotmail.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-  - url: /api/v1
-    description: Optional server description, e.g. Main (production) server
-components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-  responses:
-    UnauthorizedError:
-      type: object
-      properties:
-        errors:
-          type: boolean
-        message:
-          type: string
-        status_code:
-          type: number
-
+  - url: http://localhost/apiSchool/public/api/
+    description: Direccion de servidor Api Local
 security:
   - bearerAuth: []

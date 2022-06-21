@@ -1,0 +1,23 @@
+components:
+  securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  responses:
+    UnauthorizedError:
+      type: object
+      properties:
+        errors:
+          type: boolean
+        message:
+          type: string
+        status_code:
+          type: number
+    Success:
+      type: object
+      properties:
+        message:
+          type: string
+        status_code:
+          type: number

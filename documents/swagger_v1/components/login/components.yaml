@@ -1,0 +1,78 @@
+components:
+  schemas:
+    UserAuth:
+      type: object
+      properties:
+        errors:
+          type: boolean
+        data:
+          type: object
+          properties:
+            user:
+              $ref: '#/definitions/User'
+            token:
+              type: object
+              properties:
+                token_type:
+                  type: string
+                expires_in:
+                  type: number
+                access_token:
+                  type: string
+                refresh_token:
+                  type: string
+    UserMe:
+      type: object
+      properties:
+        errors:
+          type: boolean
+        data:
+          type: object
+          properties:
+            user:
+              $ref: '#/components/schemas/User'
+    AuthLogin:
+      type: object
+      properties:
+        email:
+          type: string
+          description: email
+          format: email
+        password:
+          type: string
+          description: password
+        client_id:
+          type: string
+          description: client id of laravel passport
+        client_secret:
+          type: string
+          description: client secret of laravel passport
+      required:
+        - username
+        - password
+        - client_id
+        - client_secret
+    Login:
+      type: object
+      required:
+        - name
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+          description: email del dusuario.
+        password:
+          type: string
+          description: contraseña del usuario.
+    User:
+      type: object
+      required:
+        - name
+        - email
+      properties: 
+        name: 
+          type: string
+        email: 
+          type: string
+          format: email
