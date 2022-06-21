@@ -21,16 +21,6 @@ components:
                   type: string
                 refresh_token:
                   type: string
-    UserMe:
-      type: object
-      properties:
-        errors:
-          type: boolean
-        data:
-          type: object
-          properties:
-            user:
-              $ref: '#/components/schemas/User'
     AuthLogin:
       type: object
       properties:

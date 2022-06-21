@@ -1,0 +1,36 @@
+components:
+  schemas:
+    addCourseTeacher:
+        type: object
+        required: 
+          - courses_id
+          - user_id
+        properties:
+          courses_id:
+            type: number
+            description: id del curso que no estenga asignado un profesor
+          user_id:
+            type: number
+            description: id de maestro que no tenga un curso asignado
+      
+    courseTeacher:
+      type: object
+      properties:
+        courses_id:
+          type: number
+        user_id:
+          type: number
+        teacher:
+          $ref: '#/components/schemas/User'
+        course:
+          $ref: '#/components/schemas/course'
+      
+      course:
+        type: object
+        properties:
+        id:
+          type: number
+        name:
+          type: string
+        code:
+          type: string

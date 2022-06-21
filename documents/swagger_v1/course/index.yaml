@@ -1,0 +1,25 @@
+paths:
+  /course:
+    summary: Url para la lista de los cursos.
+    get:
+      security:
+        - bearerAuth: []
+      tags: 
+        - Ver lista de cursos
+      summary: Todos los cursos.
+      operationId: indexCourse
+      responses:
+        200:
+          description: Lista de cursos.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/course'
+        400:
+          description: Error de credenciales
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'

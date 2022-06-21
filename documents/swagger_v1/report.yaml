@@ -1,0 +1,36 @@
+paths:
+  /report/{year}{course}:
+    summary: Url para reporte de los cursos.
+    parameters:
+    - name: year
+      in: path
+      description: año a buscar
+      required: true
+      schema:
+        type: number
+    - name: course
+      in: path
+      description: id del curso
+      required: true
+      schema:
+        type: number
+    get:
+      security:
+        - bearerAuth: []
+      tags: 
+        - Ver reporte
+      summary: Descarga los reportes de los cursos.
+      operationId: reportCourse
+      responses:
+        200:
+          description: Reporte de cursos.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/report'
+        400:
+          description: Error de credenciales
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'

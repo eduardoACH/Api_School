@@ -1,0 +1,50 @@
+paths:
+  /course/{id}:
+    summary: Url para modificar curso.
+    parameters:
+    - name: id
+      in: path
+      description: id del curso a modificar
+      required: true
+      schema:
+        type: number
+    put:
+      security:
+        - bearerAuth: []
+      tags: 
+        - Modificar curso
+      summary: modificar nombre del curso.
+      operationId: updateCourse
+      requestBody:
+        description: Objeto para curso
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+          application/x-www-form-urlencoded:
+           schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+        required: true
+      responses:
+        200:
+          description: objeto la curso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/course'
+        400:
+          description: Error de credenciales
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'

@@ -1,0 +1,33 @@
+paths:
+  /teacher-course:
+    summary: Url para asignar maestro a un curso.
+    post:
+      security:
+        - bearerAuth: []
+      tags: 
+        - Asignar maestro a curso
+      summary: Asignar maestro a curso.
+      operationId: courseTeacher
+      requestBody:
+        description: Objeto para asignar maestro
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addCourseTeacher'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/addCourseTeacher'
+        required: true
+      responses:
+        200:
+          description: Objeto de courseTeacher.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courseTeacher'
+        400:
+          description: Error de credenciales
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'

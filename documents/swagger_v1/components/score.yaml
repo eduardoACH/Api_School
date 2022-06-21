@@ -1,0 +1,28 @@
+components:
+  schemas:
+    score:
+      type: object
+      required: 
+        - student_id
+        - course_id
+        - score
+      properties:
+        student_id:
+          type: number
+          description: id del alumno a calificar
+        course_id:
+          type: number
+          description: id del curso
+        score:
+          type: number
+          description: calificacion
+    
+    scoreResponse:
+      type: object
+      properties:
+        course:
+          $ref: '#/components/schemas/course'
+        student:
+          $ref: '#/components/schemas/User'
+        score:
+          type: number

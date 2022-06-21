@@ -1,0 +1,13 @@
+content:
+  schema:
+    report:
+      type: object
+      properties:
+        alumnos:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        maestro:
+          $ref: '#/components/schemas/User'
+        course:
+          $ref: '#/components/schemas/course'
