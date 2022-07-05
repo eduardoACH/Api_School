@@ -9,7 +9,7 @@ components:
           type: object
           properties:
             user:
-              $ref: '#/definitions/User'
+              $ref: '#/schemas/User'
             token:
               type: object
               properties:
@@ -23,25 +23,36 @@ components:
                   type: string
     AuthLogin:
       type: object
+      required:
+        - client_id
+        - client_secret
+        - grant_type
+        - username
+        - password
+    
       properties:
-        email:
+        client_id:
+          type: string
+          description: id de cliente de laravel passport
+          example: 2
+        client_secret:
+          type: string
+          description: frace secreta de laravel passport
+          example: XQtpisgA3HYfBOzBZwMVKitkAmjjVkGIbyWYjDCt
+        grant_type:
+          type: string
+          description: tipo de petición
+          example: password
+        username:
           type: string
           description: email
           format: email
+          example: eduardoavilach@hotmail.com
         password:
           type: string
           description: password
-        client_id:
-          type: string
-          description: client id of laravel passport
-        client_secret:
-          type: string
-          description: client secret of laravel passport
-      required:
-        - username
-        - password
-        - client_id
-        - client_secret
+          example: 12345
+      
     Login:
       type: object
       required:

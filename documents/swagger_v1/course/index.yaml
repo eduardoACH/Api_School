@@ -1,5 +1,5 @@
 paths:
-  /course:
+  /api/course:
     summary: Url para la lista de los cursos.
     get:
       security:
@@ -22,4 +22,4 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+                $ref: '#/components/responses/UnauthorizedError'

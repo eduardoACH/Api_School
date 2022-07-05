@@ -2,14 +2,11 @@ paths:
   /oauth/token:
     post:
       tags:
-        - auth
-      summary: Login for user
-      description: Get token when login
-
-      produces:
-      - application/json
+        - login Passaport
+      summary: Login de Passaport
+      description: Obtiene tokens
       requestBody:
-        description: Optional description in *Markdown*
+        description: 
         required: true
         content:
           application/x-www-form-urlencoded:
@@ -25,7 +22,7 @@ paths:
             application/json:
               schema:
                 $ref: "#components/schemas/UserAuth"
-  /login:
+  /api/login:
     summary: Url de login.
     post:
       tags: 

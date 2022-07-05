@@ -1,5 +1,5 @@
 paths:
-  /score:
+  /api/score:
     summary: Url para calificar al alumno.
     post:
       security:
@@ -30,4 +30,4 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+                $ref: '#/components/responses/UnauthorizedError'

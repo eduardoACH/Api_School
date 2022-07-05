@@ -25,12 +25,12 @@ components:
         course:
           $ref: '#/components/schemas/course'
       
-      course:
-        type: object
-        properties:
-        id:
-          type: number
-        name:
-          type: string
-        code:
-          type: string
+    course:
+      type: object
+      properties:
+      id:
+        type: number
+      name:
+        type: string
+      code:
+        type: string

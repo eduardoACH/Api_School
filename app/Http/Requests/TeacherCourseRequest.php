@@ -35,7 +35,9 @@ class TeacherCourseRequest extends FormRequest
         }
         if($this->method()=='DELETE'){
             return [
-                'courses_id' => 'required|exists:courses,id',
+                'courses_id' => [
+                    'required',
+                    Rule::exists('courses','id')->whereNull('deleted_at')],
                 'user_id' => 'required|exists:users,id'
             ];
         }

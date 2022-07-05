@@ -1,5 +1,5 @@
 paths:
-  /user/{type}:
+  /api/user/{type}:
     summary: Url de para ver los usuarios por rol.
     parameters:
     - name: type
@@ -27,4 +27,4 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+                $ref: '#/components/responses/UnauthorizedError'

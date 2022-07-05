@@ -7,12 +7,10 @@ use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
 class CourseExport implements FromView
 {
     use Exportable;
-    use ShouldAutoSize;
     
     private $year;
     private $course_id;

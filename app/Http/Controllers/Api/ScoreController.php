@@ -24,7 +24,6 @@ class ScoreController extends Controller
         if($countUser >=5){
             return  response(['message' => 'Grade limit'],400);
         }
-        $score = Scores::find(10);
         $score = new Scores($request->validated());
         $score->save();
         

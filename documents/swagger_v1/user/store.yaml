@@ -1,5 +1,5 @@
 paths:
-  /user/register/student:
+  /api/user/register/student:
     summary: Url de registro de alumnos.
     post:
       security:
@@ -16,7 +16,7 @@ paths:
               $ref: '#/components/schemas/register'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/AuthLogin'
+              $ref: '#/components/schemas/register'
         required: true
       responses:
         200:
@@ -32,7 +32,7 @@ paths:
               schema:
                 $ref: ''#/components/responses/UnauthorizedError'
 
-  /user/register/teacher:
+  /api/user/register/teacher:
     summary: Url de registro de maestros.
     post:
       security:
@@ -49,7 +49,7 @@ paths:
               $ref: '#/components/schemas/register'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/AuthLogin'
+              $ref: '#/components/schemas/register'
         required: true
       responses:
         200:

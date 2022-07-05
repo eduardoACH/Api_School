@@ -48,6 +48,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public $guard_name = 'api';
+
     public function courses()
     {
         //return $this->hasMany(TeachersCourses::class);

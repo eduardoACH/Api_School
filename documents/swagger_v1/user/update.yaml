@@ -1,5 +1,5 @@
 paths:
-  /user/{userid}:
+  /api/user/{userid}:
     summary: Url de para editar usuario.
     parameters:
     - name: userid
@@ -39,7 +39,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
   
-  /user/password/{userid}:
+  /api/user/password/{userid}:
     summary: Url de para editar la contraseña del usuario.
     parameters:
     - name: userid
@@ -93,5 +93,5 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+                $ref: '#/components/responses/UnauthorizedError'
     

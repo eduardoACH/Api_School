@@ -24,20 +24,22 @@ use App\Http\Controllers\Api\ReportController;
 Route::post('/login',[AuthController::class,'login'])->name('login');
 
 
-Route::controller(UserController::class)->middleware('client')->prefix('user')->name('user.')->group(function (){
-    Route::get('{type}','index')->name('index');
+Route::controller(UserController::class)->middleware(['auth:api'])->prefix('user')->name('user.')->group(function (){
+    Route::get('{type}','index')->name('index')->middleware('hasRoles:ADMIN');
     Route::post('/register/student','registerStudent')->name('register.student');
     Route::post('/register/teacher','registerTeacher')->name('register.teacher');
     Route::put('{user}','update')->name('update');
     Route::put('/password/{user}','updatePassword')->name('password');
 });
 
-Route::middleware('client')->group(function (){
-    Route::apiResource('course',CourseController::class)->except('show');
-    Route::post('teacher-course',[TeacherCourseController::class,'store'])->name('teacher-course.store');
-    Route::delete('teacher-course',[TeacherCourseController::class,'destroy'])->name('teacher-course.destroy');
-    Route::post('score',[ScoreController::class,'store'])->name('score.store');
-    Route::get('report',[ReportController::class,'reportStudentCurse'])->name('report');
+Route::middleware('auth:api')->group(function (){
+    Route::middleware('hasRoles:ADMIN|TEACHER')->group(function (){
+        Route::post('teacher-course',[TeacherCourseController::class,'store'])->name('teacher-course.store');
+        Route::delete('teacher-course',[TeacherCourseController::class,'destroy'])->name('teacher-course.destroy');
+        Route::post('score',[ScoreController::class,'store'])->name('score.store');
+    });
+    Route::apiResource('course',CourseController::class)->except('show')->middleware('hasRoles:STUDENT|ADMIN|TEACHER');
+    Route::get('report',[ReportController::class,'reportStudentCurse'])->name('report')->middleware('hasRoles:ADMIN');
 });
 
 

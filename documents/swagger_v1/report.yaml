@@ -1,5 +1,5 @@
 paths:
-  /report/{year}{course}:
+  /api/report?year={year}&course_id={course}:
     summary: Url para reporte de los cursos.
     parameters:
     - name: year
@@ -25,7 +25,7 @@ paths:
         200:
           description: Reporte de cursos.
           content:
-            application/json:
+            application/vnd.ms-excel:
               schema:
                 $ref: '#/components/schemas/report'
         400:
@@ -33,4 +33,4 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnauthorizedError'
+                $ref: '#/components/responses/UnauthorizedError'
